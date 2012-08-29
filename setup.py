@@ -1,4 +1,6 @@
 from distutils.core import setup
+from setuptools import find_packages
+
 import spa_phone
 
 setup(
@@ -6,10 +8,7 @@ setup(
     version=spa_phone.__version__,
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
-    packages=[
-        'spa_phone',
-        'spa_sync',
-    ],
+    packages=find_packages(),
     url='http://github.com/Bouke/spa-phone-api',
     description='Provides an API for Linksys/Sipura VoIP SPA Phones',
     license='MIT',
