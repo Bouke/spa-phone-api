@@ -2,7 +2,7 @@ from distutils.core import setup
 
 setup(
     name='spa-phone-api',
-    version='0.1.0',
+    version='0.1.1',
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
     packages=[
