@@ -1,4 +1,5 @@
 import re
+import unicodedata
 
 __version__ = '0.1.1'
 __all__ = ['read', 'write']
@@ -33,7 +34,9 @@ def write(ip, phonebook):
             entry = phonebook[idx]
             if not 2 <= len(entry) <= 3:
                 raise ValueError('Phone book entries should have 2 or 3 values')
-            control.value = 'n=%s;p=%s' % (entry[0], entry[1])
+            name = unicodedata.normalize('NFKD', entry[0]).encode('ascii',
+                                                                  'ignore')
+            control.value = 'n=%s;p=%s' % (name, entry[1])
             if len(entry) == 3 and entry[2]:
                 control.value += ';r=%s' % entry[2]
         except IndexError:
