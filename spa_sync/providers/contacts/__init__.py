@@ -24,6 +24,8 @@ def export(group=None):
             name = ' '.join([contact.get('first', ''),
                              contact.get('middle', ''),
                              contact.get('last', '')]).strip()
+            if name == '':
+                name = contact.get('organization', '')
             if num_phones > 1:
                 name += ' (%s)' % type
             contacts.append((name, phone))
