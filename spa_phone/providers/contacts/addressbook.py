@@ -16,41 +16,32 @@ IGNORED_PROPS = ["com.apple.ABPersonMeProperty", "ABPersonFlags",
                  "com.apple.ABGroupMembersProperty",
                  ]
 
-def getAddressBook():
+def getPeopleInAddressBook(group_name=None):
     """
-    Returns the addressbook instance.
-    """
-    return ABAddressBook.sharedAddressBook()
+    Returns the people found in the AddressBook.
 
-def all():
+    optional parameter(group_name = the name of the group)
     """
-    Returns all the people from the addressbook.
-    """
-    return _clist(getAddressBook().people())
+    ab = ABAddressBook.sharedAddressBook()
+    people = None
+    if not group_name:
+        people = ab.people()
+    else:
+        for group in ab.groups():
+            if group.name() == group_name:
+                people = group.members()
+    if people == None:
+        print "No contacts could be found for given group"
+    return _clist(people)
 
-def groups():
-    """
-    Return groups
-    """
-    return _clist(getAddressBook().groups())
-
-def me():
-    """
-    Returns the current logged in user.
-    """
-    return _clist([getAddressBook().me()])[0]
-
-def getByUID(uid):
-    """
-    Returns a person or group by uid.
-    """
-    return _clist([getAddressBook().recordForUniqueId_(uid)])[0]
 
 def _clist(slist):
     """
     Method to convert NSArray to python list
     """
     retList = []
+    if slist == None:
+        return retList
     for p in slist:
         aobj = {}
         for prop in p.allProperties():
