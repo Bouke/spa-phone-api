@@ -34,7 +34,7 @@ def write(ip, phonebook):
                 raise ValueError('Phone book entries should have 2 or 3 values')
             control.value = 'n=%s;p=%s' % (entry[0], entry[1])
             if len(entry) == 3 and entry[2]:
-                control.value += 'r=%s' % entry[2]
+                control.value += ';r=%s' % entry[2]
         except IndexError:
             control.value = ''
     urlopen(form.click())
