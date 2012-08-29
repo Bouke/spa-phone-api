@@ -5,7 +5,7 @@ import spa_phone
 
 setup(
     name='spa-phone-api',
-    version=spa_phone.__version__,
+    version='0.2.0',
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
     packages=find_packages(),

@@ -1,7 +1,6 @@
 import re
 import unicodedata
 
-__version__ = '0.1.1'
 __all__ = ['read', 'write']
 
 from mechanize import urlopen, ParseResponse, TextControl
