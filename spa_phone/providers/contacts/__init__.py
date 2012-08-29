@@ -8,12 +8,12 @@ import addressbook
 
 __all__ = ['export', ]
 
-def export(**kwargs):
+def export(group=None):
     """
     Export the contacts for this provider in the correct format
     """
     contacts = []
-    for contact in addressbook.all():
+    for contact in addressbook.getPeopleInAddressBook(group_name=group):
         for type, phone in contact.get('phone', []):
             name = ' '.join([contact.get('first', ''),
                              contact.get('last', '')]).strip()
