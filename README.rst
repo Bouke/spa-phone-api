@@ -16,6 +16,15 @@ Installation with ``pip``:
     $ pip install spa-phone-api
 
 
+Command Line Usage
+==================
+
+Update the address book from OS X Contact. Defaults to sync all contacts, but
+an optional group paramater can be specified.
+::
+
+    $ spa-sync ip-address [--group]
+
 Usage
 =====
 
