@@ -1,8 +1,6 @@
 from distutils.core import setup
 from setuptools import find_packages
 
-import spa_phone
-
 setup(
     name='spa-phone-api',
     version='0.2.1',
