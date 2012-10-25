@@ -3,7 +3,7 @@ from setuptools import find_packages
 
 setup(
     name='spa-phone-api',
-    version='0.2.1',
+    version='0.2.2',
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
     packages=find_packages(),
