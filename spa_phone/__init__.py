@@ -35,7 +35,8 @@ def write(ip, phonebook):
                 raise ValueError('Phone book entries should have 2 or 3 values')
             name = unicodedata.normalize('NFKD', entry[0]).encode('ascii',
                                                                   'ignore')
-            control.value = 'n=%s;p=%s' % (name, entry[1])
+            number = re.sub('[^\d+]', '', entry[1])
+            control.value = 'n=%s;p=%s' % (name, number)
             if len(entry) == 3 and entry[2]:
                 control.value += ';r=%s' % entry[2]
         except IndexError:
