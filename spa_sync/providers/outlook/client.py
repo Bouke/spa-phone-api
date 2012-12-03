@@ -24,20 +24,16 @@ class MSOutlook(object):
             print "unable to load Outlook"
         self.records = []
 
-    def get_contacts(self):
-        #todo add a way to filter out contacts you don't want to sync
+    def get_contacts(self, group=None):
         if not self.outlookFound:
             return
-
         mapi = self.oOutlookApp.GetNamespace("MAPI")
         ofContacts =\
         mapi.GetDefaultFolder(win32com.client.constants.olFolderContacts)
-
         for oc in range(len(ofContacts.Items)):
             contact = ofContacts.Items.Item(oc + 1)
             if contact.Class == win32com.client.constants.olContact:
                 record = {}
-
                 for key in NAME_FIELDS:
                     record[key] = getattr(contact, key)
                     record['Phones'] = {}
@@ -45,5 +41,7 @@ class MSOutlook(object):
                         value = getattr(contact, pkey)
                         if value:
                             record['Phones'][pkey] = value
-                self.records.append(record)
+                categories = getattr(contact, 'Categories').split(', ')
+                if not group or group in categories:
+                    self.records.append(record)
         return self.records

@@ -7,7 +7,7 @@ def export(group=None):
     """
     contacts = []
     ms_client = MSOutlook()
-    for contact in ms_client.get_contacts():
+    for contact in ms_client.get_contacts(group):
         name = contact['FullName'] or contact['CompanyName']
         for key, value in contact['Phones'].items():
             if len(contact['Phones']) > 1:
