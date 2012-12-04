@@ -22,8 +22,8 @@ def get_contacts(group=None):
         print ("Error: Problems loading Outlook addressbook.")
         sys.exit()
     records = []
-    for index in range(len(contacts.Items)):
-        contact = contacts.Items.Item(index + 1)
+    for idx in range(1, len(contacts.Items)):
+        contact = contacts.Items.Item(idx)
         if contact.Class == win32com.client.constants.olContact:
             record = {}
             for key in NAME_FIELDS:
