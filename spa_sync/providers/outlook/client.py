@@ -19,8 +19,7 @@ def get_contacts(group=None):
         contacts =\
             mapi.GetDefaultFolder(win32com.client.constants.olFolderContacts)
     except:
-        print ("Error: Problems loading Outlook addressbook.")
-        sys.exit()
+        raise ValueError("Outlook could not be found")
     records = []
     for idx in range(1, len(contacts.Items)):
         contact = contacts.Items.Item(idx)

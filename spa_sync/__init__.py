@@ -13,15 +13,21 @@ def main():
     (options, args) = parser.parse_args()
 
     if len(args) == 0:
-        print 'usage: spa-sync ip-address'
+        print 'usage: spa-sync IP-ADDRESS [--provider PROVIDER] [--group GROUP]'
         print 'Please provide the SPA Phone IP address as first argument'
         sys.exit(2)
 
     if options.provider == 'contacts':
         from spa_sync.providers.contacts import export
-    if options.provider == 'outlook':
+    elif options.provider == 'outlook':
         from spa_sync.providers.outlook import export
+    else:
+        raise ValueError('Valid providers are: contacts and outlook')
 
-    contacts = export(options.group)
-    spa_phone.write(args[0], contacts)
-    print 'Synced', len(contacts), 'entries'
+    try:
+        contacts = export(options.group)
+    except Exception as e:
+        print 'Could not get contacts from provider (%s)' % e
+    else:
+        spa_phone.write(args[0], contacts)
+        print 'Synced', len(contacts), 'entries'
