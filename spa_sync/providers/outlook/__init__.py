@@ -1,4 +1,4 @@
-from spa_sync.providers.outlook.client import MSOutlook
+from spa_sync.providers.outlook import client
 
 
 def export(group=None):
@@ -6,8 +6,7 @@ def export(group=None):
     Export the contacts for this provider in the correct format
     """
     contacts = []
-    ms_client = MSOutlook()
-    for contact in ms_client.get_contacts(group):
+    for contact in client.get_contacts(group):
         name = contact['FullName'] or contact['CompanyName']
         for key, value in contact['Phones'].items():
             if len(contact['Phones']) > 1:

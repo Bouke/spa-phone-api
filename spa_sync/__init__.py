@@ -2,6 +2,7 @@ from optparse import OptionParser
 import sys
 import spa_phone
 
+
 def main():
     parser = OptionParser()
     parser.add_option("-p", "--provider", dest="provider", default="contacts",
