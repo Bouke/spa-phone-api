@@ -1,5 +1,29 @@
+import sys
 from distutils.core import setup
 from setuptools import find_packages
+
+if sys.platform == 'win32':
+    import py2exe
+    extra_options = dict(
+        setup_requires=['py2exe'],
+        options=dict(
+            py2exe=dict(
+                excludes=['spa_sync.providers.contacts',],
+                compressed=2,
+                bundle_files=1,
+            ),
+        ),
+        console=[
+            dict(
+                script='main.py',
+                dest_base='spa_sync',
+                description='Command utility to syncs SPA phones',
+            ),
+        ],
+        zipfile=None,
+    )
+else:
+    extra_options = dict()
 
 setup(
     name='spa-phone-api',
@@ -26,5 +50,6 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',
         'Topic :: Communications :: Internet Phone',
-    ]
+    ],
+    **extra_options
 )
