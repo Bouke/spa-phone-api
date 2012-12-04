@@ -1,6 +1,11 @@
 import sys
 import win32com.client
 
+if win32com.client.gencache.is_readonly == True:
+    # allow gencache to create the cached wrapper objects
+    # http://www.py2exe.org/index.cgi/IncludingTypelibs#Solution3
+    win32com.client.gencache.is_readonly = False
+
 PHONE_FIELDS = ['BusinessTelephoneNumber',
                 'HomeTelephoneNumber',
                 'MobileTelephoneNumber']
