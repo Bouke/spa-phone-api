@@ -17,7 +17,7 @@ if sys.platform == 'win32':
             dict(
                 script='main.py',
                 dest_base='spa_sync',
-                description='Command utility to syncs SPA phones',
+                description='Command prompt utility to sync SPA phones',
             ),
         ],
         zipfile=None,
@@ -27,7 +27,7 @@ else:
 
 setup(
     name='spa-phone-api',
-    version='0.2.2',
+    version='0.3.0',
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
     packages=find_packages(),
