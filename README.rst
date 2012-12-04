@@ -19,11 +19,11 @@ Installation with ``pip``:
 Command Line Usage
 ==================
 
-Update the address book from OS X Contacts. Defaults to sync all contacts, but
-an optional group paramater can be specified.
+Update the address book from OS X Contacts or Microsoft Outlook. Defaults to
+sync all contacts, but an optional group parameter can be specified.
 ::
 
-    $ spa-sync ip-address [--group GROUP]
+    $ spa-sync ip-address [--provider PROVIDER] [--group GROUP]
 
 Usage
 =====
