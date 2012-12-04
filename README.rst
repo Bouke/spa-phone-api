@@ -50,10 +50,9 @@ Developing
 Accessing Outlook (Windows)
 ---------------------------
 To access Outlook on Windows, you need ``pywin32``, which can be downloaded
-from `sourceforge <https://sourceforge.net/projects/pywin32/files/pywin32/>`_.
-Make sure to download the correct version matching your python version and
-architecture. To install ``pywin32`` in your virtualenv, install it using
-``easy_install`` in the activated virtualenv
+from the py2exe_ download page. Make sure to download the correct version
+matching your python version and architecture. To install ``pywin32`` in your
+virtualenv, install it using ``easy_install`` in the activated virtualenv
 ::
 
     $ Scripts\activate.bat
@@ -62,5 +61,7 @@ architecture. To install ``pywin32`` in your virtualenv, install it using
 Building EXEs (Windows)
 -----------------------
 To build EXEs on Windows, you need ``py2exe``, which can be downloaded from
-`sourceforge <https://sourceforge.net/projects/py2exe/files/py2exe/>`_. The
-same install instructions as ``pywin32`` apply.
+the pywin32_ download page. The same install instructions as ``pywin32`` apply.
+
+.. _py2exe: https://sourceforge.net/projects/py2exe/files/py2exe/
+.. _pywin32: https://sourceforge.net/projects/pywin32/files/pywin32/
