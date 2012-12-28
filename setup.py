@@ -31,8 +31,9 @@ setup(
     author='Bouke Haarsma',
     author_email='bouke@webatoom.nl',
     packages=find_packages(),
+    py_modules=['spa_api',],
     url='http://github.com/Bouke/spa-phone-api',
-    description='Provides an API for Linksys/Sipura VoIP SPA Phones',
+    description='Provides an API for Cisco/Linksys/Sipura VoIP SPA Phones',
     license='MIT',
     long_description=open('README.rst').read(),
     install_requires=[

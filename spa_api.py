@@ -1,20 +1,9 @@
 import re
 import unicodedata
-
-__all__ = ['read', 'write']
-
 from mechanize import urlopen, ParseResponse, TextControl
 
-def parse(ip):
-    response = urlopen('http://%s/pdir.htm' % ip)
-    forms = ParseResponse(response, backwards_compat=False)
-    form = forms[0]
-    controls = [control for control in form.controls
-                if isinstance(control, TextControl)]
-    return form, controls
-
 def read(ip):
-    form, controls = parse(ip)
+    form, controls = _get_controls(ip)
     p = re.compile('^n=(.+?);p=(.+?)(|;r=(.+?))$')
     phonebook = []
     for control in controls:
@@ -24,7 +13,7 @@ def read(ip):
     return phonebook
 
 def write(ip, phonebook):
-    form, controls = parse(ip)
+    form, controls = _get_controls(ip)
     if len(phonebook) > len(controls):
         raise OverflowError('Too many entries provided (max %d)'
             % len(controls))
@@ -42,3 +31,11 @@ def write(ip, phonebook):
         except IndexError:
             control.value = ''
     urlopen(form.click())
+
+def _get_controls(ip):
+    response = urlopen('http://%s/pdir.htm' % ip)
+    forms = ParseResponse(response, backwards_compat=False)
+    form = forms[0]
+    controls = [control for control in form.controls
+                if isinstance(control, TextControl)]
+    return form, controls

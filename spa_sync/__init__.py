@@ -1,5 +1,6 @@
 from optparse import OptionParser
 import sys
+from spa_api import write
 import spa_phone
 
 
@@ -29,5 +30,5 @@ def main():
     except Exception as e:
         print 'Could not get contacts from provider (%s)' % e
     else:
-        spa_phone.write(args[0], contacts)
+        write(args[0], contacts)
         print 'Synced', len(contacts), 'entries'
