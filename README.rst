@@ -4,11 +4,9 @@ SPA Phone API
 
 SPA Phone API provides an API for Linksys/Sipura SPA IP Phones. It can be used
 to programmatically update the phone's address book. Combining it into other
-scripts it can be used to sync the phone's address book with (for example)
-Google Contacts.
+scripts it can be used build scripts that sync the phone's address book with
+Google Contacts or CRM services.
 
-Command line tools are included for synchronization from OS X Contacts or
-Microsoft Outlook.
 
 Installation
 ============
@@ -18,15 +16,6 @@ Installation with ``pip``:
 
     $ pip install spa-phone-api
 
-
-Command Line Usage
-==================
-
-Update the address book from OS X Contacts or Microsoft Outlook. Defaults to
-sync all contacts, but an optional group parameter can be specified.
-::
-
-    $ spa-sync ip-address [--provider PROVIDER] [--group GROUP]
 
 Usage
 =====
@@ -47,24 +36,8 @@ Update the address book
         ('Apple Store', '+18006927753'),
     ])
 
-Developing
-==========
 
-Accessing Outlook (Windows)
----------------------------
-To access Outlook on Windows, you need ``pywin32``, which can be downloaded
-from the py2exe_ download page. Make sure to download the correct version
-matching your python version and architecture. To install ``pywin32`` in your
-virtualenv, install it using ``easy_install`` in the activated virtualenv
-::
+Contributions
+=============
 
-    $ Scripts\activate.bat
-    (env)$ easy_install [py2win]
-
-Building EXEs (Windows)
------------------------
-To build EXEs on Windows, you need ``py2exe``, which can be downloaded from
-the pywin32_ download page. The same install instructions as ``pywin32`` apply.
-
-.. _py2exe: https://sourceforge.net/projects/py2exe/files/py2exe/
-.. _pywin32: https://sourceforge.net/projects/pywin32/files/pywin32/
+Contributions welcome!
